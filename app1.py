@@ -30,7 +30,7 @@ person2 = {}
 audio_queue = []
 temp_files = []
 
-# Load Gemma 3n-e2b model via KaggleHub
+
 try:
   GEMMA_PATH = kagglehub.model_download("google/gemma-3n/transformers/gemma-3n-e2b")
   processor = AutoProcessor.from_pretrained(GEMMA_PATH)
@@ -41,7 +41,7 @@ except Exception as e:
 
 
 
-# Text generation using Gemma 3n
+
 def generate_conversation(person1, person2, topic, person_s, question):
     prompt = (
         f"Imagine a casual talk between {person1['name']} (gender: {person1['gender']}) "
@@ -61,7 +61,6 @@ def generate_conversation(person1, person2, topic, person_s, question):
     print(f"Generated conversation: {conversation}")
     return conversation
 
-# Text-to-speech (gTTS)
 def generate_audio(text):
     try:
         filename = f"audio_{uuid.uuid4()}.mp3"
@@ -75,7 +74,7 @@ def generate_audio(text):
         print(f"Error generating audio: {e}")
         return None
 
-# Conversation thread
+
 def speak_conversation_loop():
     global stop_conversation_flag, current_topic, person1, person2
     question = current_topic
@@ -90,7 +89,7 @@ def speak_conversation_loop():
             question = sentence
             time.sleep(5)
 
-# Routes
+
 @app.route('/')
 def index():
     return render_template('index1.html')
@@ -156,7 +155,7 @@ def input_voice():
     except sr.RequestError as e:
         return jsonify({'error': f"Request error: {e}"}), 500
 
-# Topic update
+
 def update_topic(new_topic):
     global stop_conversation_flag, current_topic
     stop_conversation_flag = True
@@ -165,7 +164,7 @@ def update_topic(new_topic):
     stop_conversation_flag = False
     threading.Thread(target=speak_conversation_loop).start()
 
-# Cleanup
+
 def cleanup_temp_files():
     for file in temp_files:
         try:
