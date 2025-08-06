@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartbridge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-fish-skin.png'), linear-gradient(135deg, #84fab0, #8fd3f4);
+            background-size: cover;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-top: 15px;
+            display: block;
+            color: #84fab0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #start_conversation {
+            background-color: #84fab0;
+            color: #333;
+        }
+
+        #start_conversation:hover {
+            background-color: #8fd3f4;
+        }
+
+        #stop_conversation {
+            background-color: #FF6F61;
+            color: white;
+        }
+
+        #stop_conversation:hover {
+            background-color: #FF4B4B;
+        }
+
+        #input_voice {
+            background-color: #FFD700;
+            color: #333;
+        }
+
+        #input_voice:hover {
+            background-color: #FFC300;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #84fab0;
+            font-size: 2em;
+        }
+
+        p#conversation_output {
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 20px auto;
+            color: white;
+        }
+
+        audio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heartbridge</h1>
+    <h2>Lifetime companion to mitigate loneliness</h2>
+
+    <label for="person1_name">First Friend</label>
+    <input type="text" id="person1_name" name="person1_name" placeholder="Enter name">
+
+    <label for="person1_gender" style="display: none;">Gender</label>
+    <input type="hidden" id="person1_gender" name="person1_gender" placeholder="Gender" value="female">
+
+    <label for="person2_name">Another Friend</label>
+    <input type="text" id="person2_name" name="person2_name" placeholder="Enter name">
+
+    <label for="person2_gender" style="display: none;">Gender</label>
+    <input type="hidden" id="person2_gender" name="person2_gender" placeholder="Gender" value="female">
+
+    <label for="topic">Topic for discussion</label>
+    <input type="text" id="topic" name="topic" placeholder="Enter topic">
+
+    <button id="start_conversation">Let's start</button>
+    <button id="stop_conversation">Let's stop</button>
+    <button id="input_voice">Add your opinion</button>
+
+    <h2>Conversation</h2>
+    <p id="conversation_output">Awaiting conversation...</p>
+
+    <!-- Audio player to play the generated file -->
+    <audio id="audio_player" controls></audio>
+
+    <script src="/static/script1.js"></script>
+</body>
+</html>
